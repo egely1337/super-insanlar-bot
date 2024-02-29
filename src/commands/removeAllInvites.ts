@@ -14,20 +14,22 @@ export const RemoveAllInvitesCommand: CommandType = {
             let deleted = 0;
 
             (await guild.invites.fetch()).map(async invite => {
-                await invite.delete().then(() => {deleted = deleted + 1});
+                deleted = deleted + 1;
+
+                await invite.delete();
             });
 
             await interaction.editReply({
                 content: `**yaklaşık ${deleted} davet silindi 🍫**`
             }).then(async (resp) => {
                 setTimeout(async () => {
-                    await resp.delete();
+                    await resp.delete().catch(() => console.log("[-] Message not found"));
                 }, 10000);
             })
         } else {
             await interaction.editReply("Yeterli yetkiye sahip değilsin.");
             setTimeout(async () => {
-                await interaction.deleteReply();
+                await interaction.deleteReply().catch(() => console.log("[-] Message not found"));
             }, 10000);
         }
     },
