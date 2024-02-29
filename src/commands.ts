@@ -4,6 +4,7 @@ import { type CommandType } from "./types/command";
 // * commands
 import RemoveAllInvitesCommand from "./commands/removeAllInvites";
 import ServerCommand from "./commands/server";
+import IFeelBadCommand from "./commands/ifeelbad";
 // * end
 
 type RunCommandProps = {
@@ -12,7 +13,7 @@ type RunCommandProps = {
 }
 
 export const Commands: CommandType[] = [
-    RemoveAllInvitesCommand, ServerCommand
+    RemoveAllInvitesCommand, ServerCommand, IFeelBadCommand
 ];
 
 export const CommandsData = Object.values(Commands).map((val) => val.data.toJSON());
