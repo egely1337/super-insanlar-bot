@@ -13,11 +13,13 @@ export const RemoveAllInvitesCommand: CommandType = {
             const guild = interaction.guild as Guild;
             let deleted = 0;
 
-            (await guild.invites.fetch()).map(async invite => {
-                deleted = deleted + 1;
+            (await guild.invites.fetch()).map(async invite => new Promise(async (resolve) => {
+                    await invite.delete();
 
-                await invite.delete();
-            });
+                    deleted = deleted + 1;
+                    resolve((null));
+                })
+            );
 
             await interaction.editReply({
                 content: `**yaklaşık ${deleted} davet silindi 🍫**`

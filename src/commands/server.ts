@@ -19,7 +19,7 @@ export const ServerCommand: CommandType = {
 
         return await interaction.editReply({
             content: 
-            `Nyaa~! 🌸 Merhaba **${interaction.user.displayName}-san!** Benim adım **egely** desu~! (*≧ω≦) Bu kawaii Discord sunucusu hakkında sizinle biraz bilgi paylaşmak istiyorum nya~!\n\n**Sunucu Adı:** ${guild?.name} 🌈✨\n**Sunucu Sahibi:** <@${(await guild?.fetchOwner())?.id}> 👑💖\n**Sunucu Oluşturulma Tarihi:** ${date} 📅🌸\n**Toplam Üye Sayısı:** ${guild?.memberCount}👥💕\n**Toplam Destekçi Sayısı:** ${guild?.premiumSubscriptionCount} 💜🟪`
+            `Nyaa~! 🌸 Merhaba **${interaction.user.displayName}-san!** Benim adım **egely** desu~! (*≧ω≦) Bu kawaii Discord sunucusu hakkında sizinle biraz bilgi paylaşmak istiyorum nya~!\n\n**Sunucu Adı:** ${guild?.name} 🌈✨\n**Sunucu Sahibi:** <@${(await guild?.fetchOwner())?.id}> 👑💖\n**Sunucu Oluşturulma Tarihi:** ${date} 📅🌸\n**Toplam Üye Sayısı:** ${(await guild?.fetch())?.memberCount}👥💕\n**Toplam Destekçi Sayısı:** ${guild?.premiumSubscriptionCount} 💜🟪`
         })
     }, 
 
