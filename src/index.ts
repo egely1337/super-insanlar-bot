@@ -10,7 +10,17 @@ async function main() {
 
     // * create client
     const client = new Client({
-        intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages]
+        intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages],
+        
+        // * change presence :)))
+        presence: {
+            activities: [{
+                name: 'with @egely',
+                type: ActivityType.Streaming,
+                url: 'https://egely.me'
+            }],
+            status: 'idle'
+        }
     })
 
     // * client ready event
@@ -21,16 +31,6 @@ async function main() {
         await deployCommands({
             clientId: client.user.id // * user bot id
         });
-
-        // * change presence [playing with @egely1337 (streaming)]
-        await client.user.setPresence({
-            activities: [{
-                name: 'with @egely', // * desc
-                type: ActivityType.Streaming, // * type
-                url: 'https://egely1337.com' // * streaming url
-            }],
-            status: 'idle'
-        })
     })
 
     // * client interaction create event

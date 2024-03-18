@@ -22,7 +22,7 @@ export const RemoveAllInvitesCommand: CommandType = {
             );
 
             await interaction.editReply({
-                content: `**yaklaşık ${deleted} davet silindi 🍫**`
+                content: `**tüm davetler uçuruldu >.< 🍫**`
             }).then(async (resp) => {
                 setTimeout(async () => {
                     await resp.delete().catch(() => console.log("[-] Message not found"));
